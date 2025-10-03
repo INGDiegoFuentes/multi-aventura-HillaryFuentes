@@ -3,7 +3,7 @@
 | Ítem | Detalle |
 | :--- | :--- |
 | **Estado del Proyecto** | **✅ Desplegado y 100% Funcional** |
-| **Acceso Rápido** | **[Jugar Ahora](#🌐-despliegue-y-acceso-rápido-github-pages)** |
+| **Acceso Rápido** | **[Jugar Ahora](https://ingdiegofuentes.github.io/multi-aventura-HillaryFuentes/)** |
 | **Propósito** | Herramienta lúdica para el dominio de las tablas de multiplicar del 2 al 9. |
 | **Desarrollador Líder** | **Diego Fuentes Garcia** |
 | **Inspiración** | **Hillary Fuentes** (Ingeniera de Mañana) |
