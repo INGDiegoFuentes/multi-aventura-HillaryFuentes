@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Aventura 🚀 - La App de Hillary Fuentes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    <script src="https://kit.fontawesome.com/c143997635.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div id="app">
+        <section id="config-screen" class="screen active">
+            <h1 class="title">¡Bienvenido a Multi-Aventura! 🌟</h1>
+            <p class="subtitle">Aprende las tablas del 2 al 9 de forma divertida.</p>
+
+            <div class="input-group">
+                <label for="student-name">Tu Nombre:</label>
+                <input type="text" id="student-name" placeholder="Escribe aquí tu nombre..." maxlength="20">
+            </div>
+
+            <div class="input-group">
+                <label for="table-select">Elige la Tabla:</label>
+                <select id="table-select"></select>
+            </div>
+
+            <div class="input-group">
+                <label>Modo de Juego:</label>
+                <div class="radio-group">
+                    <input type="radio" id="mode-ordenado" name="game-mode" value="ordenado" checked>
+                    <label for="mode-ordenado"><i class="fas fa-list-ol"></i> Ordenado</label>
+                    <input type="radio" id="mode-aleatorio" name="game-mode" value="aleatorio">
+                    <label for="mode-aleatorio"><i class="fas fa-random"></i> Aleatorio</label>
+                    <input type="radio" id="mode-pares" name="game-mode" value="pares">
+                    <label for="mode-pares"><i class="fas fa-sort-numeric-up"></i> Saltadas Pares</label>
+                    <input type="radio" id="mode-impares" name="game-mode" value="impares">
+                    <label for="mode-impares"><i class="fas fa-sort-numeric-down"></i> Saltadas Impares</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Tipo de Pregunta:</label>
+                <div class="radio-group">
+                    <input type="radio" id="type-escribir" name="question-type" value="escribir" checked>
+                    <label for="type-escribir"><i class="fas fa-keyboard"></i> Escribir Resultado</label>
+                    <input type="radio" id="type-multiple" name="question-type" value="multiple">
+                    <label for="type-multiple"><i class="fas fa-check-double"></i> Opción Múltiple</label>
+                </div>
+            </div>
+
+            <button id="start-game-btn" class="btn primary-btn"><i class="fas fa-play"></i> ¡Comenzar Aventura!</button>
+        </section>
+
+        <section id="game-screen" class="screen">
+            <header class="game-header">
+                <div class="user-info">
+                    <span>Jugador: <strong id="current-player-name"></strong></span>
+                    <span id="game-timer"><i class="far fa-clock"></i> 00:00</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </header>
+
+            <div class="stats-card">
+                <div class="stat-item correct"><i class="fas fa-check-circle"></i> Aciertos: <span id="stats-correct">0</span></div>
+                <div class="stat-item error"><i class="fas fa-times-circle"></i> Errores: <span id="stats-error">0</span></div>
+                <div class="stat-item streak"><i class="fas fa-fire"></i> Racha: <span id="stats-streak">0</span></div>
+            </div>
+
+            <div class="question-area">
+                <p class="question-number">Pregunta <span id="current-question-index">1</span> de <span id="total-questions">10</span></p>
+                <p id="question-text" class="question-text">5 x 8 = ?</p>
+
+                <div id="answer-type-write" class="answer-area active">
+                    <input type="number" id="answer-input" placeholder="Escribe el resultado" min="0" required>
+                    <button id="submit-answer-btn" class="btn primary-btn">Verificar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div id="answer-type-multiple" class="answer-area">
+                    </div>
+            </div>
+            
+            <div class="sound-toggle-container">
+                <input type="checkbox" id="sound-toggle" checked>
+                <label for="sound-toggle" class="toggle-label"><i class="fas fa-volume-up"></i> Sonido</label>
+            </div>
+        </section>
+
+        <section id="certificate-screen" class="screen">
+            <div id="trophy-animation">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="title congrats-title">¡Misión Cumplida, <span id="cert-student-name"></span>! 🎉</h2>
+            <p class="subtitle cert-subtitle">Has dominado la Tabla del <span id="cert-table-number"></span>.</p>
+            
+            <div id="certificate" class="certificate-card">
+                <h3 class="cert-header">CERTIFICADO DE MULTIPLICACIÓN</h3>
+                <p class="cert-for">Otorgado a:</p>
+                <p class="cert-name" id="cert-final-name"></p>
+                <p class="cert-body">Por completar con éxito la Tabla del <span id="cert-final-table-number"></span> con las siguientes estadísticas impresionantes:</p>
+                
+                <div class="cert-stats">
+                    <div class="stat-box"><i class="fas fa-check"></i> Aciertos: <span id="cert-correct"></span></div>
+                    <div class="stat-box"><i class="fas fa-times"></i> Errores: <span id="cert-error"></span></div>
+                    <div class="stat-box"><i class="fas fa-fire-alt"></i> Racha Máx.: <span id="cert-max-streak"></span></div>
+                    <div class="stat-box"><i class="fas fa-hourglass-half"></i> Tiempo Total: <span id="cert-time"></span></div>
+                    <div class="stat-box medal-box">🏆Medalla: <span id="cert-medal"></span></div>
+                </div>
+
+                <p class="cert-date">Fecha: <span id="cert-date"></span></p>
+                <p class="cert-signature">Desarrollado por: Diego Fuentes Garcia</p>
+            </div>
+
+            <div class="cert-actions">
+                <button id="print-cert-btn" class="btn secondary-btn"><i class="fas fa-print"></i> Imprimir / Guardar PDF</button>
+                <button id="restart-game-btn" class="btn primary-btn"><i class="fas fa-redo-alt"></i> Jugar Otra Vez</button>
+            </div>
+        </section>
+
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

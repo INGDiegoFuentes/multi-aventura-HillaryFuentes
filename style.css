@@ -1,0 +1,564 @@
+/* Variables de Color (Paleta Amigable para Niños) */
+:root {
+    --primary-color: #4CAF50; /* Verde principal (Acierto) */
+    --secondary-color: #2196F3; /* Azul secundario (Botones/Énfasis) */
+    --accent-color: #FFC107; /* Amarillo acento (Estadísticas/Trofeo) */
+    --background-start: #f0f8ff; /* Azul muy claro */
+    --background-end: #e6f3ff;
+    --card-background: #ffffff;
+    --success-color: #4CAF50; /* Verde para acierto */
+    --error-color: #F44336; /* Rojo para error */
+    --text-color: #333;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Base y Tipografía */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Fondo con gradiente moderno y amigable */
+    background: linear-gradient(135deg, var(--background-start), var(--background-end));
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#app {
+    background: var(--card-background);
+    border-radius: 25px;
+    box-shadow: var(--shadow-heavy);
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Pantallas y Transiciones */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Títulos y Subtítulos con gradiente */
+.title {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 900;
+    background: -webkit-linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Botones */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-light);
+}
+
+.primary-btn {
+    /* Gradiente para botón principal (Verificar, Jugar) */
+    background: linear-gradient(45deg, var(--primary-color), #6dd5ed); 
+    color: white;
+    margin-top: 20px;
+}
+
+.primary-btn:hover {
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    margin-right: 15px;
+}
+
+.secondary-btn:hover {
+    background-color: #ffb300;
+    transform: translateY(-2px);
+}
+
+/* Formularios y Entradas (Configuración) */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+/* Radio Buttons Group (Modos y Tipos) */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 15px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 400;
+    color: var(--secondary-color);
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.5);
+    border-color: var(--secondary-color);
+    font-weight: 700;
+}
+
+/* Interfaz de Juego */
+.game-header {
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Barra de Progreso Animada */
+.progress-bar-container {
+    height: 15px;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    /* Gradiente para la barra de progreso */
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color)); 
+    transition: width 0.5s ease-out;
+    border-radius: 10px;
+}
+
+/* Tarjeta de Estadísticas */
+.stats-card {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    background-color: #fff8e1; /* Fondo suave para las estadísticas */
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-light);
+}
+
+.stat-item {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.stat-item i {
+    margin-right: 5px;
+}
+
+.stat-item.correct { color: var(--success-color); }
+.stat-item.error { color: var(--error-color); }
+.stat-item.streak { color: orange; }
+
+/* Área de Pregunta */
+.question-area {
+    text-align: center;
+    padding: 30px;
+    /* Gradiente suave para el contenedor de la pregunta */
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb); 
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-heavy);
+}
+
+.question-number {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.question-text {
+    font-size: 3em;
+    font-weight: 900;
+    margin-bottom: 25px;
+    color: #0d47a1;
+}
+
+/* Animación de Vibración al Fallar (Feedback) */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.vibrate {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Área de Respuesta */
+.answer-area {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.answer-area.active {
+    display: flex;
+}
+
+/* Ajuste específico para el input en la pregunta */
+#answer-input {
+    width: 150px;
+    text-align: center;
+    font-size: 1.5em;
+    /* Borde verde inicial para el input de respuesta */
+    border: 2px solid var(--primary-color); 
+}
+#answer-input:focus {
+    /* Mantener el foco verde en el input de respuesta */
+    border-color: var(--primary-color);
+}
+
+/* Opciones Múltiples */
+.multiple-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.option-btn {
+    padding: 15px;
+    border: 3px solid var(--secondary-color);
+    background-color: #fff;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: #e0f7fa;
+    transform: scale(1.02);
+}
+
+.option-btn.correct-feedback {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+    animation: pulse 0.3s;
+}
+
+.option-btn.error-feedback {
+    background-color: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+}
+
+/* Animación de Pulso (Acierto) */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Toggle de Sonido */
+.sound-toggle-container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 0.9em;
+}
+
+.sound-toggle-container input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.toggle-label i {
+    margin-right: 5px;
+}
+
+.sound-toggle-container input[type="checkbox"]:checked + .toggle-label {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Confeti (Canvas) */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Pantalla de Certificado */
+.congrats-title {
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.cert-subtitle {
+    margin-bottom: 25px;
+}
+
+#trophy-animation {
+    font-size: 5em;
+    color: gold;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: jump 1s infinite alternate;
+}
+
+@keyframes jump {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+.certificate-card {
+    border: 5px solid gold;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, #fffde7, #fff8e1);
+    box-shadow: var(--shadow-heavy);
+}
+
+.cert-header {
+    font-size: 1.8em;
+    color: #d4af37;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 10px;
+}
+
+.cert-for {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.cert-name {
+    font-size: 2.5em;
+    font-weight: 900;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.cert-body {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.cert-body strong {
+    color: var(--primary-color);
+}
+
+.cert-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-box {
+    background-color: #f0f4c3; /* Fondo para stats del certificado */
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.stat-box i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.medal-box {
+    background-color: #ffd70033; /* Fondo de medalla suave */
+}
+
+.cert-date {
+    font-size: 0.9em;
+    color: #999;
+    margin-top: 15px;
+}
+
+/* Crédito de desarrollador personalizado */
+.cert-signature {
+    font-size: 0.9em;
+    color: #999;
+    margin-top: 15px;
+    font-weight: 600; 
+}
+
+.cert-actions {
+    text-align: center;
+}
+
+/* Media Queries (Responsive Design) */
+@media (max-width: 500px) {
+    #app {
+        padding: 20px;
+        max-width: 100%;
+        margin: 10px;
+    }
+    .title {
+        font-size: 2em;
+    }
+    .radio-group label, .option-btn {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    .question-text {
+        font-size: 2.5em;
+    }
+    .answer-area.active {
+        flex-direction: column;
+    }
+    #answer-input {
+        width: 80%;
+    }
+    .multiple-options-grid {
+        grid-template-columns: 1fr;
+    }
+    .cert-stats {
+        grid-template-columns: 1fr;
+    }
+    .sound-toggle-container {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Estilos de Impresión (para el Certificado PDF) */
+@media print {
+    body {
+        background: none;
+        padding: 0;
+        margin: 0;
+        min-height: auto;
+    }
+    #app {
+        box-shadow: none;
+        max-width: none;
+        width: 100%;
+        padding: 0;
+    }
+    /* Ocultar todo excepto la pantalla del certificado */
+    .screen:not(#certificate-screen) {
+        display: none !important;
+    }
+    #certificate-screen {
+        display: block !important;
+        padding: 20mm;
+    }
+    #trophy-animation, .congrats-title, .cert-subtitle, .cert-actions, .sound-toggle-container {
+        display: none !important;
+    }
+    .certificate-card {
+        border: 4px solid gold;
+        box-shadow: none;
+        width: 100%;
+        margin-top: 0;
+    }
+    .cert-stats {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
